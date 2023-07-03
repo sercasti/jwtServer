@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Id;;
+import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "tokens")
@@ -12,6 +13,7 @@ public class Token {
     private String description;
     private String category;
     
+    @PersistenceCreator
     public Token(String id, String name, String description, String category) {
         this.id = id;
         this.name = name;
