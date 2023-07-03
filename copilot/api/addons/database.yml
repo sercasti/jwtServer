@@ -1,0 +1,45 @@
+Parameters:
+  App:
+    Type: String
+    Description: Your application's name.
+  Env:
+    Type: String
+    Description: The environment name your service, job, or workflow is being deployed to.
+  Name:
+    Type: String
+    Description: The name of the service, job, or workflow being deployed.
+
+Resources:
+  DBCluster:
+    Type: "AWS::DocDB::DBCluster"
+    DeletionPolicy: Delete
+    Properties:
+      DBClusterIdentifier: "testsapicluster"
+      MasterUsername: "superusername"
+      MasterUserPassword: "superSecurePassword"
+  DBInstance:
+    Type: "AWS::DocDB::DBInstance"
+    Properties:
+      DBClusterIdentifier: !Ref DBCluster
+      DBInstanceIdentifier: "test-api-instance"
+      DBInstanceClass: "db.r5.large"
+
+Outputs:
+  ClusterId:
+    Value: !Ref DBCluster
+  ClusterEndpoint:
+    Value: !GetAtt DBCluster.Endpoint
+    Export:
+      Name: MongoHost
+  ClusterReadEndpoint:
+    Value: !GetAtt DBCluster.ReadEndpoint
+  ClusterPort:
+    Value: !GetAtt DBCluster.Port
+  InstanceId:
+    Value: !Ref DBInstance
+  InstancePort:
+    Value: !GetAtt DBInstance.Port
+    Export:
+      Name: MongoPort
+  InstanceEndpoint:
+    Value: !GetAtt DBInstance.Endpoint
