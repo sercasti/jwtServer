@@ -17,13 +17,31 @@ Resources:
       DBClusterIdentifier: "testsapicluster"
       MasterUsername: "superusername"
       MasterUserPassword: "superSecurePassword"
+      DBSubnetGroupName : !Ref DBSubnetGroup
+      DBClusterParameterGroupName: !Ref DBParameterGroup
+      VpcSecurityGroupIds: !Split [',', { 'Fn::ImportValue': !Sub '${App}-${Env}-EnvironmentSecurityGroup' }]
   DBInstance:
     Type: "AWS::DocDB::DBInstance"
     Properties:
       DBClusterIdentifier: !Ref DBCluster
       DBInstanceIdentifier: "test-api-instance"
       DBInstanceClass: "db.r5.large"
-
+  DBSubnetGroup:
+    Type: "AWS::DocDB::DBSubnetGroup"
+    Properties: 
+      DBSubnetGroupDescription: "Subnet Group for DocDB"
+      SubnetIds: !Split [',', { 'Fn::ImportValue': !Sub '${App}-${Env}-PrivateSubnets' }]
+  DBParameterGroup:
+    Type: "AWS::DocDB::DBClusterParameterGroup"
+    Properties:
+      Description: "ClusterParameterGroup description"
+      Family: "docdb5.0"
+      Name: "sampleParameterGroup"
+      Parameters: 
+        audit_logs: "enabled"
+        tls: "disabled"
+        ttl_monitor: "enabled"
+   
 Outputs:
   SpringDataMongodbHost:
     Value: !GetAtt DBCluster.Endpoint
