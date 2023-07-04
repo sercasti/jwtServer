@@ -38,3 +38,5 @@ out/
 
 ### VS Code ###
 .vscode/
+copilot/.workspace
+copilot/environments/test/manifest.yml

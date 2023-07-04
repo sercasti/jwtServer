@@ -1,5 +1,5 @@
-FROM amazoncorretto:17-alpine-jdk
+FROM amazoncorretto:17
 
-COPY build/dist/jwtServer-0.0.1-SNAPSHOT.jar jwtServer.jar
+COPY build/libs/jwtServer-0.0.1-SNAPSHOT.jar jwtServer.jar
 
 ENTRYPOINT ["java","-jar","/jwtServer.jar"]

@@ -16,7 +16,7 @@ It can be deployed with Copilot to Fargate ARM and it includes a load testing be
 To run on Fargate, use this command:
 
 ```shell
-copilot init --app demo --name api --type 'Load Balanced Web Service' --deploy
+copilot init --app demo --name api --type "Load Balanced Web Service" --port 8080 --dockerfile Dockerfile --deploy
 ```
 
 ### Configuration
