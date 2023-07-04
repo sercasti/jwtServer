@@ -27,10 +27,14 @@ To run on Fargate, use this command:
 copilot init --app demo --name api --type "Load Balanced Web Service" --port 8080 --dockerfile Dockerfile --deploy
 ```
 
+Once the stack is done (could take a while), you can use the public endpoints:
+List: http://yourELBurl.us-east-1.elb.amazonaws.com/tokens (GET)
+Create: http://yourELBurl.us-east-1.elb.amazonaws.com/create (POST)
+
 ### Configuration
 
 - Copilot config is here: [/copilot/api/manifest.yml](/copilot/api/manifest.yml)
-- Cloudformation to create DocumentDB y is on [/copilot/api/addons/database.yml](/copilot/api/addons/database.yml) and it is run automatically by _copilot init_
+- Cloudformation to create DocumentDB is on [/copilot/api/addons/database.yml](/copilot/api/addons/database.yml) and it is run automatically by _copilot init_
 
 ### Design
 
