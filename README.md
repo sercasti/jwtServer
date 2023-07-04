@@ -10,6 +10,14 @@ It can be deployed with Copilot to Fargate ARM and it includes a load testing be
 - docker installed 
 - aws cli installed and configured with credentials
 - aws copilot installed: <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Copilot.html>
+- java 17
+- gradle
+
+### Build
+
+```shell
+./gradlew build      
+```
 
 ### Deploy
 
