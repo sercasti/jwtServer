@@ -62,3 +62,9 @@ You can use this project as is, but the idea is for you to extend this by doing 
 - use the Database instance to load a dataset for your code to read/write,
 - test that the URL is working,
 - use that URL on the load test tool at the /loadtest folder to get benchmarks
+
+### Conclusion
+
+YMMV: But from this evaluation, a Fargate ARM container with 2vCPU's/4GB, running Java 17 with Spring 3, over DocumentDB on t4g.medium, can hold 15 TPS
+
+![Alt text](benchmark.png)

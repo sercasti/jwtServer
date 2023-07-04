@@ -28,7 +28,7 @@ Resources:
       DBClusterIdentifier: !Ref DBCluster
       DBInstanceIdentifier: "test-api-instance"
       EnablePerformanceInsights: true
-      DBInstanceClass: "db.r5.large"
+      DBInstanceClass: "db.t4g.medium"
   DBSubnetGroup:
     Type: "AWS::DocDB::DBSubnetGroup"
     Properties: 
