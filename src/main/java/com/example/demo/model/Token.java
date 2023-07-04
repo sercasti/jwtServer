@@ -13,6 +13,10 @@ public class Token {
     private String description;
     private String category;
     
+    public Token() {
+        //jackson needs this constructor
+    }
+
     @PersistenceCreator
     public Token(String id, String name, String description, String category) {
         this.id = id;
@@ -22,6 +26,7 @@ public class Token {
     }
 
     public Token(String name, String description, String category) {
+        //ui constructor
         this.name = name;
         this.description = description;
         this.category = category;
