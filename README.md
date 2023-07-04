@@ -25,10 +25,6 @@ To run on Fargate, use this command:
 
 ```shell
 copilot init --app demo --name api --type "Load Balanced Web Service" --port 8080 --dockerfile Dockerfile --deploy
-
-copilot init --app demo --name api --type "Load Balanced Web Service" --port 8080 --dockerfile Dockerfile
-copilot env deploy --no-rollback           \
-
 ```
 
 ### Configuration
