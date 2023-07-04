@@ -20,6 +20,8 @@ Resources:
       DBSubnetGroupName : !Ref DBSubnetGroup
       DBClusterParameterGroupName: !Ref DBParameterGroup
       VpcSecurityGroupIds: !Split [',', { 'Fn::ImportValue': !Sub '${App}-${Env}-EnvironmentSecurityGroup' }]
+      EnableCloudwatchLogsExports:
+        - audit
   DBInstance:
     Type: "AWS::DocDB::DBInstance"
     Properties:
