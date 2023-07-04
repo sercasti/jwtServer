@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,13 @@ import com.example.demo.repository.TokenRepository;
 @Configuration
 public class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+    @Value("${spring.data.mongodb.host}")
+    String springDataMongodbHost;
 
     @Bean
     CommandLineRunner initDatabase(TokenRepository tokenRepository) {
+        log.info("springDataMongodbHost from @Value: {}", springDataMongodbHost);
+        log.info("springDataMongodbHost from System.getenv(): {}", System.getenv("SPRING_DATA_MONGODB_HOST"));
 
         if (tokenRepository.count() == 0) {
             return args -> {
