@@ -1,7 +1,7 @@
 # JWT Server App Example
 
 This is a sample application using java 17, spring 3, and mongodb, to generate and save JWT tokens
-It can be deployed with Copilot to Fargate ARM and it includes a load testing benchmark tool.
+It can be deployed with Copilot to Fargate ARM and it includes a load testing benchmark tool. The idea for this PoC is not to implement a real JWT authorization server, but to estimate the average TPS for a fargate/java/spring service backed by a nosql database
 
 ## AWS Copilot
 
